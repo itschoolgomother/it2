@@ -25,6 +25,6 @@ def pushGit():
     data = str(timeNow.day) +"."+ str(timeNow.month) +"."+ str(timeNow.year)
     os.system("git add *")
     os.system("git commit -m" + data)
-    os.system("git push origin master")
+    os.system("git push -u origin master")
 
 main(pushGit,setInterval,off)
