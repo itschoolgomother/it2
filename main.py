@@ -23,8 +23,8 @@ def off():
 def pushGit():
     timeNow = datetime.datetime.now()
     data = str(timeNow.day) +"."+ str(timeNow.month) +"."+ str(timeNow.year)
-    os.system("git add *")
+    os.system("git add .")
     os.system("git commit -m" + data)
-    os.system("git push -u origin master")
+    os.system("git push")
 
 main(pushGit,setInterval,off)
