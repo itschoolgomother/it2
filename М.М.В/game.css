@@ -1,3 +1,19 @@
+body{
+	background-color:black;
+}
+#restart{
+	width: 54px;
+	height: 27px;
+	background-color: blue;
+	margin: 0 auto; 
+}
+#pacman{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 50px;
+	left: 1150px;
+}
 #hero{
 width: 12%;
 height: 16%;
