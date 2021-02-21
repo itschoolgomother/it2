@@ -25,6 +25,15 @@
 	let dy = 2;
 	let playerHeight = 100;
 	let playerWidht = 100;
+	let player1X = 0;
+	let player2X = cnv.width-100;
+	let player2 = new Image();
+	let player2Up = false;
+	let player2Down = false;
+	let player2Width = 100;
+	let player2Heigth = 100;
+	let player2Y = cnv.height/2;
+	player2.src = "image.png";
 	player1.src = "image.png";
 	document.addEventListener("keydown", nazhato, false)
 	document.addEventListener("keyup", otzhali, false)
@@ -35,6 +44,12 @@
 		if(e.keyCode == 87){
 			playerUp = true;
 		}
+		if(e.keyCode == 40){
+			player2Down = true;
+		}
+		if(e.keyCode == 38){
+			player2Up = true;
+		}
 	}
 	function otzhali(e){
 		if(e.keyCode == 83){
@@ -42,6 +57,12 @@
 		}
 		if(e.keyCode == 87){
 			playerUp = false;
+		}
+		if(e.keyCode == 40){
+			player2Down = false;
+		}
+		if(e.keyCode == 38){
+			player2Up = false;
 		}
 	}
 	function ball(){
@@ -57,24 +78,47 @@
 			ball();
 			ballx = ballx + dx;
 			bally = bally + dy;
-		ctx.drawImage(player1, 0, y, playerWidht, playerHeight);
+			ctx.drawImage(player2, player2X, player2Y, player2Width, player2Heigth);
+		ctx.drawImage(player1, player1X, y, playerWidht, playerHeight);
 		if(bally + ballr >= cnv.height ||bally - ballr <= 0){
 			dy = -dy;
-		}if(ballx + ballr >= cnv.width ||ballx - ballr <= 0){
+
+		}if(ballx + ballr >= cnv.width ){
 			dx = -dx;
+
+		} 	else if(ballx + dx < 0 + player1X + playerWidht){
+			
+			if(bally>y && bally < y + playerHeight){
+				dx = -dx;
+			}
 		}
 		if(playerDown){
-			y+=10;
+			y+=4;
 			if(y + playerHeight >= cnv.height){
-				y-=10
+				y-=4;
 			}	
 		}
 		if(playerUp){
-			y-=10	
+			y-=4;	
 			if(y <= 0){
-				y+=10;
-			}																								;
+				y+=4;
+			}
 		}
+		if(player2Down){
+			player2Y+=4;
+			if(player2Y + player2Height >= cnv.height){
+				player2Y-=4;
+			}
+		}
+		if(player2Up){
+			player2Y-=4;
+			if(player2Y <= 0){
+				player2Y+=4;
+			}
+
+		}
+			
+			
 	} 
 	setInterval(game, 1);
 </script>
