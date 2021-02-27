@@ -1,0 +1,26 @@
+.header-logo{
+	width: 205px;
+	height: 70px;
+	border: 1px solid black;
+	/*управление поток. прижимает контейнер слева*/
+	float: left;
+}
+.main-nav{
+	width: 250px;
+	height: 70px;
+	border: 1px solid black;
+	float: left;
+}
+.main-nav ul li{
+	list-style-type: none;
+	/*изменяет поведение элемента на странице на строчно-блочное*/
+	display:inline-block;
+}
+.button{
+	height: 70px;
+	width: 50px;
+	float: left;
+}
+.main{
+	clear: both;
+}

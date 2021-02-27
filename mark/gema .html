@@ -4,7 +4,7 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="game.css">
 </head>
-<body>
+<body id="main">
 <div id="hero"></div>
 <div id="coin"></div>
 <div id="sc">$ </div>
@@ -19,7 +19,7 @@
 	coin.style.left= Math.random()*window.innerWidth-100+"px";
 	coin.style.top= Math.random()*window.innerHeight-100+"px";
 	reset.style.left = window.innerWidth/2-50+ "px";
-
+	let colors=['black', 'green', 'orange', 'yellow'];
 	let show = "block";
 	let keyleft = false;
 	let keyright=false;
@@ -76,6 +76,32 @@
 	}
 
 	function geme(){
+		switch (score){
+			case 10:
+			main.style.backgroundColor=colors[0];
+			// bDX+=5;
+			// bDY+=5;
+				hero.style.backgroundColor=colors[-1];
+
+			break;
+
+			case  20:
+			main.style.backgroundColor=colors[1];
+			hero.style.backgroundColor=colors[0];
+			break;
+
+			case 30:
+			main.style.backgroundColor=colors[2];
+				hero.style.backgroundColor=colors[1];
+			break ;
+
+			case 40:
+			main.style.backgroundColor=colors[3];
+				hero.style.backgroundColor=colors[2];
+			break;
+
+
+		}
 		bx += bDX;
 		by += bDY;
 		bomb.style.left = bx + "px";

@@ -25,11 +25,14 @@
 		let y = 15;
 		let show = "block";
 		let score = 0;
-		let colors = ["red","blue","green"]
+		let colors = ["darkgrey","gold","blue","darkpink","green","red","darkviolet"]
 		let rightpressed = false;
 		let leftpressed = false;
 		let toppressed = false;
 		let downpressed = false;
+		restart.onclick = function () {
+			location.reload();
+		}
 		let intersection = function (h,c) {
 			return h.top + h.height >= c.top &&
 			c.top + c.height >= h.top &&
@@ -117,6 +120,7 @@
 		let box2 = pacman.getBoundingClientRect()
 		if (intersection(box, box2)) {
 			stop++;
+			restart.style.display = "block";
 		}
 		if (intersection(box, box1)) {
 			    show = "none";
@@ -131,12 +135,27 @@
 			}
 		}
 		switch(score){
+			case 10:
+			coin.style.backgroundColor = colors[0]
+			break;
+			case 20:
+			coin.style.backgroundColor = colors[1]
+			break;
+			case 30:
+			coin.style.backgroundColor = colors[2]
+			break;
+			case 40:
+			coin.style.backgroundColor = colors[3]
+			break;
 			case 50:
-			colors[0];
-			case 250:
-			colors[1];
-			case 1000:
-			colors[0];
+			coin.style.backgroundColor = colors[4]
+			break;
+			case 60:
+			coin.style.backgroundColor = colors[5]
+			break;
+			case 70:
+			coin.style.backgroundColor = colors[6]
+			break;
 		}
 		requestAnimationFrame(game)
 			}

@@ -5,7 +5,8 @@ body{
 	width: 54px;
 	height: 27px;
 	background-color: blue;
-	margin: 0 auto; 
+	margin: 0 auto;
+	display: none; 
 }
 #pacman{
 	width: 100px;
