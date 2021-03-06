@@ -137,24 +137,94 @@
 		switch(score){
 			case 10:
 			coin.style.backgroundColor = colors[0]
+			if (eDx>0) {
+				eDx =5;
+			}else{
+				eDx = -5;
+			}
+			if (eDy>0) {
+				eDy =5;
+			}else{
+				eDy = -5;
+			}
 			break;
 			case 20:
 			coin.style.backgroundColor = colors[1]
+			if (eDx>0) {
+				eDx =10;
+			}else{
+				eDx = -10;
+			}
+			if (eDy>0) {
+				eDy =10;
+			}else{
+				eDy = -10;
+			}
 			break;
 			case 30:
 			coin.style.backgroundColor = colors[2]
+			if (eDx>0) {
+				eDx =15;
+			}else{
+				eDx = -15;
+			}
+			if (eDy>0) {
+				eDy =15;
+			}else{
+				eDy = -15;
+			}
 			break;
 			case 40:
 			coin.style.backgroundColor = colors[3]
+			if (eDx>0) {
+				eDx =20;
+			}else{
+				eDx = -20;
+			}
+			if (eDy>0) {
+				eDy =20;
+			}else{
+				eDy = -20;
+			}
 			break;
 			case 50:
 			coin.style.backgroundColor = colors[4]
+			if (eDx>0) {
+				eDx =25;
+			}else{
+				eDx = -25;
+			}
+			if (eDy>0) {
+				eDy =25;
+			}else{
+				eDy = -25;
+			}
 			break;
 			case 60:
 			coin.style.backgroundColor = colors[5]
+			if (eDx>0) {
+				eDx =25;
+			}else{
+				eDx = -25;
+			}
+			if (eDy>0) {
+				eDy =25;
+			}else{
+				eDy = -25;
+			}
 			break;
 			case 70:
 			coin.style.backgroundColor = colors[6]
+			if (eDx>0) {
+				eDx =30;
+			}else{
+				eDx = -30;
+			}
+			if (eDy>0) {
+				eDy =30;
+			}else{
+				eDy = -30;
+			}
 			break;
 		}
 		requestAnimationFrame(game)
