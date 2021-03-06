@@ -1,0 +1,19 @@
+body{
+	background-image: url(1.jpg);
+	background-repeat: no-repeat;
+	background-position: 50% -50%;
+	/*background-attachment: fixed;*/
+	height: 100vh;
+
+	background-size: 100% 100%;
+}
+img{
+	width: 150px;
+	/*filter: sepia(100%);*/
+	filter: sepia(100%);
+	transition: 1s linear;
+}
+img:hover{
+	filter: sepia(0);
+	transform: translate(0,50px);
+}
