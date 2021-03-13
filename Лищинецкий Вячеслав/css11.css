@@ -1,0 +1,44 @@
+.stan{
+	height: 350px;
+	width: 180px;
+	background-image: url(3.jpg);
+	animation: go 4s infinite linear; 
+}
+@keyframes go{ 
+	20%{
+		background-position: 35% 20%;
+	}
+		40%{
+		background-position: 70% 60%;
+	}
+}
+
+.box{
+	width: 50px;
+	height: 50px;
+	background-color: red;
+	margin: 5px;
+}
+body{
+	display: flex;
+	justify-content: space-between;
+	animation: go1 4s infinite linear; 
+}
+@keyframes go1{
+	20%{
+		justify-content: flex-start;
+	}
+		40%{
+		justify-content: flex-end;
+	}
+	60%{
+		justify-content: center;
+	}
+		80%{
+		justify-content: space-around;
+	}
+
+		100%{
+		justify-content: space-between;
+	}
+}
