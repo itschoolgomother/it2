@@ -2,9 +2,51 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="c.css">
 </head>
 <body>
-	<div> <a href="gema .html">PLAY</a></div>
+	<canvas width="288" height="512" id="cv" ></canvas>
+	<script type="text/javascript">
+		let cnv = document.getElementById('cv')
+		let ctx = cnv.getContext('2d')
+
+		let bg = new Image()
+		let fg = new Image()																			
+		let bird  = new Image()																			
+		let pipeup = new Image()																		
+		let pipeBottom = new Image()
+
+		bg.src = 'flappy_bird_bg.png'
+		fg.src = 'flappy_bird_fg.png'
+		bird.src = "flappy_bird_bird.png"	
+		pipeup.src = "flappy_bird_pipeUp.png"
+		pipeBottom.src = "flappy_bird_pipeBottom.png"
+		let bx = 10;
+		let by = 10;
+		let step = 80;
+		document.addEventListener("keydown",move);
+
+		let pipe = [];
+
+		pipe[0] = {
+			x: cnv.width,
+			y: 0
+		}
+		console.log(pipe[0].x)
+		function move (e){
+			by-=20;
+		}
+		function game() {
+			ctx.drawImage(bg, 0,0)
+			ctx.drawImage(bird,bx,by )
+			by +=2
+			for (let i = 0; i < pipe.length; i++) {
+			ctx.drawImage(pipeup, pipe[i].x, pipe[i].y)
+			pipe[i].x--;
+			}
+			requestAnimationFrame(game)
+		}
+		requestAnimationFrame(game)
+	</script>
+
 </body>
 </html>

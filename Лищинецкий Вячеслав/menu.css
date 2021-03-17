@@ -1,0 +1,49 @@
+.menu{
+	list-style-type: none;
+}
+/*@font-face{
+	font-family: "VlaShu";
+	src: url("20354.otf") format("truetype");
+}*/
+body{
+	font-family: "VlaShu";
+	color: white;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+}
+.main-menu{
+
+}
+.menu li {
+	display: inline-block;
+	background-color: #4676868a;
+	height: 20px;
+	width: 150px;
+	text-align: center;	
+	position: relative;
+	margin-right: -5px;
+
+}
+.menu li a{
+	color: white;
+	text-decoration: none;		
+
+}
+.sub-menu{
+	position: absolute;
+	display: none;
+	transition: 1s linear;
+	left: -100%;
+	
+	flex-direction: column;
+}
+.menu li:first-child:hover .sub-menu{
+	display: flex; 
+	transform: translate(110px, 2px);
+	
+}
+.sub-menu li a:hover{
+	text-decoration: underline;
+	color: red;
+}
