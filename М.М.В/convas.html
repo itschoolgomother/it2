@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#myCanvas{
+			border: 1px dashed black;
+		}
+	</style>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<script type="text/javascript">
+	let cvs = document.getElementById("myCanvas");
+	let ctx = cvs.getContext("2d");
+	let x = 225;
+	let y = 225;
+	let dx = 2;
+	let dy =2;
+	function draw() {
+	ctx.clearRect(0,0,500,500);
+	ctx.beginPath();
+	ctx.fillStyle = "#6600bb";
+	ctx.rect(x,y,50,50);
+	ctx.fill();
+	ctx.closePath();
+	x+=dx;
+	if (x + 50 >= cvs.width || x <= 0) {
+		dx = -dx;
+	}
+	}
+	setInterval(draw,100);
+</script>
+</body>
+</html>
