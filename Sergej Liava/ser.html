@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<canvas width="1000" height="1000" id="Seg">
+</canvas>
+<script type="text/javascript" id="Seg">
+	
+	let cnv = document.getElementById("Seg")
+	let ctx = cnv.getContext("2d");
+	let tank = new Image();
+	let tw = 100;
+	let th = 100;
+	let tx = Math.random()*(cnv.width-tw);
+	let ty = Math.random()*(cnv.height-tw);
+	let playerDown = false;
+	let playerUp = false;
+	let playerLeft = false;
+	let playerRight = false;
+	let dir;
+	document.addEventListener("keydown", nazhato, false)
+	document.addEventListener("keyup", otzhali, false)
+function nazhato(e){
+		if(e.keyCode == 83){
+			playerDown = true;
+ 
+		}
+		if(e.keyCode == 87){
+			playerUp = true;
+
+		}
+		if(e.keyCode == 68){
+			playerRight = true;
+
+		}
+		if(e.keyCode == 65){
+			playerLeft = true;
+
+		}
+	}
+function otzhali(e){
+		if(e.keyCode == 83){
+			playerDown = false;
+		}
+		if(e.keyCode == 87){
+			playerUp = false;
+		}
+		if(e.keyCode == 68){
+			playerRight = false;
+		}
+		if(e.keyCode == 65){
+			playerLeft = false;
+		}
+	}
+	tank.src = "/home/it2/Документы/Sergej Liava/tank3.png"
+	function game(){
+		ctx.clearRect(0,0,cnv.width,cnv.height);
+		ctx.drawImage(tank,tx, ty,tw,th);
+		if(playerLeft){
+			tx -= 10;
+			dir="left";
+		}
+		if(playerRight){
+			tx += 10;
+			dir="right";
+		}
+		if(playerUp){
+			ty -= 10;
+			dir="up";
+		}
+		if(playerDown){
+			ty += 10;
+			dir="down"
+		}
+	}
+	setInterval(game,1)
+</script>
+</body>
+</html>

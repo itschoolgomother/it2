@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<button onclick="addRandomImag()" id="sc">add</button>
+<script type="text/javascript">
+	let cnv = document.getElementById('myCanvas');
+	let ctx = cnv.getContext('2d');
+	let score = 0;
+	let img1 = new Image();
+	let img2 = new Image();
+	let img3 = new Image();
+	let img4 = new Image();
+	img1.src = "index.jpeg";
+	img2.src = "9343bb285c0da42513d7764e94e49b21.jpg";
+	img3.src = "monster.jpeg";
+	img4.src = "rdf6657bbbce6dw39k12x.jpg";
+
+	function images(imag,x,y,w,h) {
+		this.imag = imag;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+	}
+
+	let imgArray = [];
+
+	function addRandomImag(){
+		let randomImage = [img1,img2,img3,img4];
+		let imag = randomImage[Math.floor(Math.random()*4)];
+		let x = Math.random()*cnv.width;
+		let y = Math.random()*cnv.height;
+		let w = Math.random()*90+10;
+		let h = Math.random()*90+10;
+		let image = new images(imag,x,y,w,h);
+		imgArray.push(image);
+		draw();
+
+	}
+
+	function draw() {
+		for (let i = 0; i < imgArray.length; i++) {
+			score++;
+			sc.innerHTML = "add" + score;
+			let image = imgArray[i];
+			ctx.beginPath();
+			ctx.drawImage(image.imag, image.x, image.y, image.w, image.h)
+		}
+	}
+</script>
+</body>
+</html>

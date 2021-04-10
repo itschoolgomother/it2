@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css13.css">
+	<title></title>
+</head>
+<body>
+	<input type="password" name="" id="myinput">
+		<div class="true" id="box">
+		<p id="number" class="invalid">В пароле должна быть минимум одна цифра</p>
+		<p id="lower" class="invalid">Пароль должен состоять из латинских букв</p>
+		<p id="upper" class="invalid">В пароле должна быть минимум одна большая буква</p>
+		<p id="dlina" class="invalid">Длина пароля не менее 8 символов</p>
+	</div>
+	<script type="text/javascript">
+		myinput.onfocus = function(){
+			box.style.display='block'
+		}
+		myinput.onblur = function(){
+			box.style.display='none'
+		}
+		myinput.onkeyup = function() {
+			let lc = /[a-z]/g;
+			let uc = /[A-Z]/g;
+			let nums = /[0-9]/g; 
+		if (myinput.value.length >= 8) {
+		dlina.classList.remove('invalid')
+		dlina.classList.add('valid')
+		}else{
+			dlina.classList.remove('valid')
+			dlina.classList.add('invalid')
+		}
+
+		if(myinput.value.match(lc)){
+		lower.classList.remove('invalid')
+		lower.classList.add('valid')
+		}else{
+			lower.classList.remove('valid')
+			lower.classList.add('invalid')
+		}
+
+		if(myinput.value.match(uc)){
+		upper.classList.remove('invalid')
+		upper.classList.add('valid')
+		}else{
+			upper.classList.remove('valid')
+			upper.classList.add('invalid')
+		}
+
+		if(myinput.value.match(nums)){
+		number.classList.remove('invalid')
+		number.classList.add('valid')
+		}else{
+		number.classList.remove('valid')
+		number.classList.add('invalid')	
+		}
+		}
+
+	</script>
+
+</body>
+</html>
