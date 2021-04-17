@@ -20,12 +20,16 @@
 	let playerLeft = false;
 	let playerRight = false;
 	let dir;
+	let shot = true; 
+	let bulletsArr = [];
 	document.addEventListener("keydown", nazhato, false)
 	document.addEventListener("keyup", otzhali, false)
 function nazhato(e){
 		if(e.keyCode == 83){
 			playerDown = true;
- 
+		}
+	if(e.keyCode == 69){
+			shot = true;
 		}
 		if(e.keyCode == 87){
 			playerUp = true;
@@ -53,26 +57,74 @@ function otzhali(e){
 		if(e.keyCode == 65){
 			playerLeft = false;
 		}
+		if(e.keyCode == 69){
+			shot = false;
+		}
 	}
+	function bullets(x, y, w, h){
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+			}
+			function createbullets(){
+				let x = tx;
+				let y = ty;
+				let w = 20;
+				let h = 20;
+				let bullet = new bullets(x, y, w, h)
+				bulletsArr.push(bullet);
+				drawBullets();
+			}
+			document.addEventListener('click', drawBullets);
+			function drawBullets(){
+				for(let i = 0; i<bulletsArr.length; i++){
+					ctx.beginPath();
+					let bullet = bulletsArr[i];
+					ctx.fillStyle = 'black';
+					ctx.rect(bullet.x, bullet.y, bullet.w, bullet.h);
+					ctx.fill();
+					if(dir == "right"){
+						bullet.x+=5;
+						if(bullet.x == cnv.width){
+						delete bullet[i];
+					}
+					}
+
+					if(dir == "left"){
+						bullet.x-=5;
+					}
+					if(dir == "up"){
+						bullet.y-=5;
+					}
+					if(dir == "down"){
+						bullet.y+=5;
+					}
+				}
+			}
+setInterval(drawBullets, 10)
 	tank.src = "/home/it2/Документы/Sergej Liava/tank3.png"
 	function game(){
 		ctx.clearRect(0,0,cnv.width,cnv.height);
 		ctx.drawImage(tank,tx, ty,tw,th);
 		if(playerLeft){
-			tx -= 10;
+			tx -= 5;
 			dir="left";
 		}
 		if(playerRight){
-			tx += 10;
+			tx += 5;
 			dir="right";
 		}
 		if(playerUp){
-			ty -= 10;
+			ty -= 5;
 			dir="up";
 		}
 		if(playerDown){
-			ty += 10;
+			ty += 5;
 			dir="down"
+		}
+		if(shot){
+			createbullets();
 		}
 	}
 	setInterval(game,1)
