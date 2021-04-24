@@ -4,23 +4,28 @@
 	<title></title>
 </head>
 <body>
-<canvas width="1000" height="1000" id="Seg">
+<canvas width="2000" height="2000" id="Seg">
 </canvas>
 <script type="text/javascript" id="Seg">
 	
 	let cnv = document.getElementById("Seg")
 	let ctx = cnv.getContext("2d");
 	let tank = new Image();
+	let govno = new Image();
 	let tw = 100;
 	let th = 100;
 	let tx = Math.random()*(cnv.width-tw);
 	let ty = Math.random()*(cnv.height-tw);
+	let hw = 100;
+	let hh = 100;
+	let hx = Math.random()*(cnv.width-tw);
+	let hy = Math.random()*(cnv.height-tw);
 	let playerDown = false;
 	let playerUp = false;
 	let playerLeft = false;
 	let playerRight = false;
 	let dir;
-	let shot = true; 
+	let shot = false; 
 	let bulletsArr = [];
 	document.addEventListener("keydown", nazhato, false)
 	document.addEventListener("keyup", otzhali, false)
@@ -61,52 +66,72 @@ function otzhali(e){
 			shot = false;
 		}
 	}
-	function bullets(x, y, w, h){
+	function bullets(x, y, w, h, direction){
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
+		this.direction = direction;
 			}
 			function createbullets(){
 				let x = tx;
 				let y = ty;
 				let w = 20;
 				let h = 20;
-				let bullet = new bullets(x, y, w, h)
+				let direction = dir;
+				let bullet = new bullets(x, y, w, h, direction)
 				bulletsArr.push(bullet);
 				drawBullets();
 			}
 			document.addEventListener('click', drawBullets);
 			function drawBullets(){
+
 				for(let i = 0; i<bulletsArr.length; i++){
+					
 					ctx.beginPath();
+					// ctx.clearRect(0, 0, cnv.width, cnv.height)
 					let bullet = bulletsArr[i];
 					ctx.fillStyle = 'black';
 					ctx.rect(bullet.x, bullet.y, bullet.w, bullet.h);
 					ctx.fill();
-					if(dir == "right"){
-						bullet.x+=5;
-						if(bullet.x == cnv.width){
-						delete bullet[i];
-					}
+					if(bullet.direction == "right"){
+						bullet.x+=8;
+						if(bullet.x >= cnv.width){
+						
+					 }
 					}
 
-					if(dir == "left"){
-						bullet.x-=5;
+					if(bullet.direction == "left"){
+						bullet.x-=8;
+						if(bulet.x <= 0){
+
+						}
 					}
-					if(dir == "up"){
-						bullet.y-=5;
+					if(bullet.direction == "up"){
+						bullet.y-=8;
+						if(bullet.y <= 0){
+
+						}
 					}
-					if(dir == "down"){
-						bullet.y+=5;
+					if(bullet.direction == "down"){
+						bullet.y+=8;
+						if(bullet.y >= cnv.height){
+
+						}
 					}
 				}
 			}
-setInterval(drawBullets, 10)
+// setInterval(drawBullets, 1)
+	govno.src = "/home/it2/Документы/Sergej Liava/5ce25a9a82c302cb7b76c164299cc613.png"
 	tank.src = "/home/it2/Документы/Sergej Liava/tank3.png"
 	function game(){
+			if(shot){
+			createbullets();
+		}
 		ctx.clearRect(0,0,cnv.width,cnv.height);
-		ctx.drawImage(tank,tx, ty,tw,th);
+		ctx.drawImage(tank, tx, ty, tw, th);
+		ctx.drawImage(govno, hx, hy, hw, hh);
+		
 		if(playerLeft){
 			tx -= 5;
 			dir="left";
@@ -123,9 +148,7 @@ setInterval(drawBullets, 10)
 			ty += 5;
 			dir="down"
 		}
-		if(shot){
-			createbullets();
-		}
+		drawBullets()
 	}
 	setInterval(game,1)
 </script>

@@ -1,8 +1,15 @@
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
 .carousel{
 	width: 600px;
 	position: relative;
 }
-.carousel .carousel-item,.carousel .carousel-item-hidden{
+.carousel .carousel-item,
+.carousel .carousel-item-hidden{
 	display: none;
 }
 .carousel .carousel-item img{
@@ -17,4 +24,43 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@keyframes next{
+	0%{
+		opacity:0;
+		transform: scale(0.2) translateX(-100%);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1) translateX(0);
+	}
+}
+@keyframes back{
+	0%{
+		opacity:0;
+		transform: scale(0.2) translateX(100%);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1) translateX(0);
+	}
+}
+.carousel .btns button{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border:0;
+}
+.carousel .btns button:hover{
+	background-color: darkgrey;
+	border:2px black solid;
+}
+.carousel .btns button:active{
+	background-color: white;
+	border:5px black dashed;
+	font-weight: bold;
+	font-size: 30px;
 }
