@@ -16,8 +16,13 @@
 		<button id="back">></button>
 		<button id="next"><</button>
 	</div>
+	<div class="dotes">
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
 </div>
 <script type="text/javascript">
+let dots = document.getElementsByClassName("dot");
 let slides = document.getElementsByClassName("carousel-item");
 let i = 0;
 next.addEventListener('click', nextSlide);
@@ -30,6 +35,7 @@ function slidePosition(){
 	slides[i].classList.add("carousel-item-visible");
 }
 function nextSlide(){
+	dots[i].style.backgroundColor = "white";
 	for (let slide of slides) {
 		slide.style.animation = "next 1s";
 	}
@@ -41,6 +47,7 @@ function nextSlide(){
 	slidePosition()
 }
 function backSlide(){
+	dots[i].style.backgroundColor = "green";
 	for (let slide of slides) {
 		slide.style.animation = "back 1s";
 	}

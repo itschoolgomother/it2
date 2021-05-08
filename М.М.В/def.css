@@ -1,3 +1,15 @@
+.dotes{
+	display: flex;
+	justify-content: center;
+}
+.dot{
+	border-radius: 50%;
+	background-color: blue;
+	border:1px solid black;
+	width: 15px;
+	height: 15px;
+	margin: 5px;
+}
 body{
 	display: flex;
 	justify-content: center;
