@@ -3,6 +3,7 @@ body{
 	height: 100vh;
     justify-content: center;
     align-items: center;
+    font-family: 'Garuda'
 }
 .carousel{
 	height: 600px;
@@ -44,12 +45,12 @@ height: 50px;
 border-radius: 50%;
 border: 0;
 }
-.carousel #carousel-dots{
+.carousel #carousel_dots{
 	display: flex;
 	justify-content: center;
 	width: 100%;
 }
-.carousel #carousel-dots .dot{
+.carousel #carousel_dots .dot{
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;

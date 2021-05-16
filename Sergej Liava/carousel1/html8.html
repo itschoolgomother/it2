@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css3.css">
 </head>
 <body>
+	<h1>go</h1>
 	<div class="carousel">
 		<div class="carousel-item visible">
 			<img src="img.jpg">		
@@ -19,16 +20,14 @@
 			<button id="back"><</button>
 			<button id="next">></button>
 		</div>
-		<div id="carousel-dots">
-			<div class="dot"></div>
-			<div class="dot"></div>
-			<div class="dot"></div>
+		<div id="carousel_dots">
+			
 		</div>
 	</div>
 	<script type="text/javascript">
 		let slides = document.getElementsByClassName('carousel-item')
 		for(let i = 0; i < slides.length; i++){
-			dots.innerHTML = '<div class=\"dot\"></div>'
+			carousel_dots.innerHTML += '<div class=\"dot\"></div>'
 		}
 		let i = 0;
 		let dots = document.getElementsByClassName('dot');
@@ -53,13 +52,31 @@
 			dots[i].style.backgroundColor = 'grey';
 		}
 		function backSlides () {
+			dots[i].style.backgroundColor = 'white';
 			if (i==0) {
 				i=slides.length-1;
 			}else{
 				i--
 			}
+			dots[i].style.backgroundColor = 'grey';
 			slidePosition()
 		}
+		  next.onmouseover = function(){
+		  	nextSlide();
+		  }
+		  back.onmouseover = function(){
+		  	backSlides();
+		  }
+		  document.addEventListener('keydown',
+		  	nazvanievirfi);
+		  function nazvanievirfi(event){
+		  	if(event.keyCode == 38){
+            nextsSlides();
+		  	}
+		  	if(event.keyCode == 40){
+            backSlides();
+		  }
+
 	</script>
 </body>
 </html>
