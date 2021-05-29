@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="huh.css">
+</head>
+<body>
+	<div class="box">
+		<input type="password" id="pass" name="">
+		<div id="check">
+			<p class="invalid" id="dl">Длина пароля должна быть не менее 8 символов</p>
+
+			<p class="invalid" id="lat">Пароль должен состоять из латинских букв</p>
+
+			<p class="invalid" id="bl">Пароль должен иметь хотя-бы одну большую букву</p>
+
+			<p class="invalid" id="nums">Пароль должен иметь цифры</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		let pas = document.getElementById('pass')
+		pas.onfocus = function(){
+			check.style.display = "block";
+		}
+		pas.onblur = function(){
+			check.style.display = "none";
+		}
+		pas.onkeyup = function(){
+			let numbers = /[0-9]/g;
+			let upl = /[A-Z]/g;
+			let lowl = /[a-z]/g;
+			if (pas.value.length >= 8) {
+				dl.classList.remove('invalid');
+				dl.classList.add('valid');
+			}else{
+				dl.classList.remove('valid');
+				dl.classList.add('invalid');		
+
+			}
+
+			if (pas.value.match(numbers)) {
+				nums.classList.remove('invalid');
+				nums.classList.add('valid');
+			}
+			else{
+				nums.classList.remove('valid');
+				nums.classList.add('invalid');
+			}
+
+			if (pas.value.match(lowl)) {
+				lat.classList.remove('invalid');
+				lat.classList.add('valid');
+			}
+			else{
+				lat.classList.remove('valid');
+				lat.classList.add('invalid');
+			}
+			if (pas.value.match(bl)) {
+				bl.classList.remove('invalid');
+				bl.classList.add('valid');
+			}
+			else{
+				bl.classList.remove('valid');
+				bl.classList.add('invalid');
+			}
+		}
+	</script>
+
+
+</body>
+</html>

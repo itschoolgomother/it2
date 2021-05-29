@@ -1,0 +1,45 @@
+body{
+margin: 0;
+padding: 0;
+color: red;
+}
+.page{
+	display: grid;
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 2fr 11fr;
+	grid-template-areas: "h h"
+	"n m";
+	height: 100vh;
+	width: 1200px;
+	margin: 0 auto;
+	grid-gap: 5px; 
+}
+header{
+	background-color: gold;
+	grid-area: h;
+	
+}
+header img{
+	height: 60px;
+	width: auto;
+}
+nav{
+	background-color: yellow;
+	grid-area:n;
+
+}
+nav .navbar-item{
+width: 90%;
+height: 35px;
+background-color: gold;
+margin: 5px auto;
+border-radius: 40%/10%;
+}
+nav .navbar-item a{
+color: green;
+}
+main{
+	background-color: lightyellow;
+	grid-area:m;
+	
+}

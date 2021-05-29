@@ -7,44 +7,25 @@
 <body>
 	<div class="carousel">
 		<div class="carousel-item visible">
-			<img src="Jotstar.jpg">
+		<img src="Jotstar.jpg">
 		</div>
-		<div class="carousel-item">
+			<div class="carousel-item">
 			<img src="Giorno1.jpeg">
-		</div>
-		<div class="carousel-item">
-			<img src="Dio1.jpg">
-		</div>
+			</div>
+				<div class="carousel-item">
+				<img src="Dio1.jpg">
+				</div>
 		<div class="carousel-btns">
 			<button id="back"><</button>
 			<button id="next">></button>
-		</div>	
-
-		<div class="carousel-dots">
-			<div class="dot"></div>
-
-			<div class="dot"></div>
-
-			<div class="dot"></div>
-		</div>
-
-
-
-
-
+		</div>		
 	</div>
-
-
-
-
-
 
 	<script type="text/javascript">
 		let slides = document.getElementsByClassName('carousel-item')
 		console.log(slides[0])
 		console.log(slides.length)
 		let i = 0;
-		let dots = document.getElementsByClassName('dot');
 		next.addEventListener("click", nextSlide)
 		back.addEventListener("click", backSlide)
 		function slide_Position() {
@@ -55,63 +36,29 @@
 			slides[i].classList.add("visible")
 		}
 		function nextSlide() {
-
-			dots[i].style.backgroundColor='lightgrey';
-
+			for(let slide of slides){
+				slide.style.animation="next 1s"
+			}
 			if (i == slides.length-1) {
 				i = 0
-			}else{
-				i++;
-			}
-			slides[i].style.animation="next 1s"
-			dots[i].style.backgroundColor="darkgrey" 
-			slide_Position()
+				}else{
+					i++;
+				}
+				slide_Position()
 
 		}
 		function backSlide() {
-			
-		dots[i].style.backgroundColor='lightgrey';
-
+			for(let slide of slides){
+				slide.style.animation="back 1s"
+			}
 			if (i == 0 ) {
 				i = slides.length-1
-			}else{
-				i--;
-			}
-			slides[i].style.animation="back 1s"
-			slide_Position()
-			dots[i].style.backgroundColor="darkgrey"
+				}else{
+					i--;
+				}
+				slide_Position()
 
 		}
-
-		function sumStr(a,b) {
-  return String(Number(a)+Number(b));
-}
-
-function greet (name, owner) {
-  return name === owner ? 'Hello boss' :  'Hello guest';
-}
-
-	function litres(time) {
-  return Math.floor(time/2);
-	}
-
-	function find_average(array) {
-  var sum = array.reduce((a, b) => a + b, 0);
-  return sum/array.length;
-}
-
-	function digitize(n) {
-  return String(n).split('').map(Number).reverse()
-}
-
-	function reverseWords(str){
-  return str.split(' ').reverse().join(' ');
-}
-
-	// 	function sumStr(a,b) { 
-	//   return (+a+ +b)+''  
-	// }
-	ПАДЛА НЕ ТРОГАЙ ЭТОТ КОД ЭТО НА ЗАМЕТКУ
 
 	</script>
 

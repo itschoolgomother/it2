@@ -1,0 +1,23 @@
+div{
+	width: 260px;
+	height: 150px;
+	border: 1px solid black;
+	background-color: #b985d796;;
+	margin: 10px auto;
+}
+.box:hover{
+	background-color: #f593e8;
+}
+.box1{
+	transition: 1s linear;
+}
+.box1:hover{
+	background-color: #a0ebb1;
+}
+.box2{
+	transition: 1.5s linear;
+}
+.box2:hover{
+	background-color:#e8c3ac;
+	transform: rotate(360deg);
+}
