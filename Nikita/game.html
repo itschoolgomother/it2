@@ -2,31 +2,51 @@
 <html>
 <head>
 	<title></title> 
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-			<link rel="stylesheet" type="text/css" href="game.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="game.css">
 </head>
 <body>
-	<img src="person.png" width="300px" id="person">
+	<img src="Dio1.jpg" width="300px" id="person">
 	<img src="coin.png" id="coin"> 
-		<script type="text/javascript">
-			let x = 75;
-			let y = 50;
-			let buttonLeft =  false;
-			let buttonRight = false;
+	<div id="scoreboard">Score:0</div>
+	<script type="text/javascript">
+		let x = 75;
+		let y = 50;
+		let buttonUp = false;
+		let buttonDown = false;
+		let buttonLeft =  false;
+		let buttonRight = false;
+		let score = 0;
 
-			document.addEventListener("keydown", Pressed, false); 
-			document.addEventListener("keyup", UnPressed, false);
+		console.log(scoreboard.innerHTML)
 
-			function Pressed(e) {
-				if (e.keyCode == 68) {
-					buttonRight = true  
-				}
-				if (e.keyCode == 65) {
-					buttonLeft = true  
-				}
+		document.addEventListener("keydown", Pressed, false); 
+		document.addEventListener("keyup", UnPressed, false);
+
+		let intersection = function(a,b){
+			return a.left + a.width >= b.left &&
+			 b.left + a.width >= a.left &&
+			b.top + b.height >= a.top &&
+			a.top + a.height >= b.top;  
+		}
+
+
+		function Pressed(e) {
+			if (e.keyCode == 68) {
+				buttonRight = true  
 			}
+			if (e.keyCode == 65) {
+				buttonLeft = true  
+			}
+			if (e.keyCode == 87) {
+				buttonUp = true
+			}
+			if (e.keyCode == 83) {
+				buttonDown = true
+			}
+		}
 
-			function UnPressed(e) {
+		function UnPressed(e) {
 			if (e.keyCode == 68){
 				buttonRight = false;
 			}	
@@ -34,23 +54,61 @@
 			if (e.keyCode == 65){
 				buttonLeft = false;
 			}
-
+			if (e.keyCode == 87) {
+				buttonUp = false
+			}
+			if (e.keyCode == 83) {
+				buttonDown = false
 			}
 
-			function Game() {
-				if (buttonRight) {
-					x = x+5;
-					person.style.left = x+"px"
+		}
+
+		
+		function Game() {
+			let person1 = person.getBoundingClientRect();
+			let coin1 = coin.getBoundingClientRect();
+
+			if (intersection(person1,coin1)) {
+				coin.style.left = `${Math.random()*(window.innerWidth-coin1.width)}px`;
+				coin.style.top = `${Math.random()*(window.innerHeight-coin1.height)}px`;
+				score ++
+				scoreboard.innerHTML = `score:${score}`
 			}
-				if (buttonLeft) {
-					x = x-5;
-					person.style.left = x+"px"
+			
+				
+			
+			if (buttonRight) {
+				x = x+5;
+				person.style.left = `${x}px`;
+				if (x + person1.width >=window.innerWidth) {
+					x = x - 5;
 				}
-
-			requestAnimationFrame(Game)
 			}
-
+			if (buttonLeft) {
+				x = x-5;
+				person.style.left = `${x}px`;
+				if (x <= 0) {
+					x = x + 5;
+				}
+			}
+			if (buttonDown) {
+				y = y+5;
+				person.style.top = `${y}px`;
+				if (y >=window.innerHeight) {
+					y = y - 5;
+				}
+			}
+			if (buttonUp) {
+				y = y-5;
+				person.style.top = `${y}px`;
+				if (y + person1.height <= 0) {
+					y = y + 5;
+				}
+			}
 			requestAnimationFrame(Game)
-		</script>
+		}
+
+		requestAnimationFrame(Game)
+	</script>
 </body>
 </html>
