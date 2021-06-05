@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="password" name="">
+	<script type="text/javascript">
+		function checkPassword(password) {
+			let lc = /[a-z]/g;
+			let uc = /[A-Z]/g;
+			let nums = /[0-9]/g; 
+		if (password.length >= 8) {
+			return true;
+		}else{
+			return false;
+		}
+
+		if(password.match(lc)){
+			return true;
+		}else{
+			return false;
+		}
+
+		if(password.match(uc)){
+			return true;
+		}else{
+			return false;
+		}
+
+		if(password.match(num)){
+			return true;
+		}else{
+			return false;
+		}
+		}
+
+	</script>
+	<div class="true">
+		<p id="number" class="invalid">В пароле должна быть минимум одна цифра</p>
+		<p id="lower" class="invalid">Пароль должен состоять из латинских букв</p>
+		<p id="upper" class="invalid">В пароле должна быть минимум одна большая буква</p>
+		<p id="dlina" class="invalid">Длина пароля не менее 8 символов</p>
+	</div>
+</body>
+</html>

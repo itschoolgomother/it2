@@ -6,9 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="game.css">
 </head>
 <body>
-	<img src="Dio1.jpg" width="300px" id="person">
+	<img src="Dio2.png" width="300px" id="person">
 	<img src="coin.png" id="coin"> 
 	<div id="scoreboard">Score:0</div>
+	<img src="img2.png" width="100px" id="enemy">
+	<div id="restart">Restart</div>
 	<script type="text/javascript">
 		let x = 75;
 		let y = 50;
@@ -17,6 +19,11 @@
 		let buttonLeft =  false;
 		let buttonRight = false;
 		let score = 0;
+		let eX = 300;
+		let eY = 300;
+		let eDx = 6;
+		let eDy = 6;
+		let stop = 0;
 
 		console.log(scoreboard.innerHTML)
 
@@ -63,10 +70,27 @@
 
 		}
 
+		restart.onclick = function () {
+			document.location.reload();
+		}
+
 		
 		function Game() {
+			enemy.style.top = `${eY}px`;
+			enemy.style.left = `${eX}px`;
 			let person1 = person.getBoundingClientRect();
 			let coin1 = coin.getBoundingClientRect();
+			let enemy1 = enemy.getBoundingClientRect();
+			eX+=eDx;
+			eY+=eDy;
+
+
+			if (eY + enemy1.height>= window.innerHeight || eY<=0) {
+				eDy = -eDy;
+			}
+			if (eX + enemy1.width>= window.innerWidth || eX<=0) {
+				eDx = -eDx;
+			}
 
 			if (intersection(person1,coin1)) {
 				coin.style.left = `${Math.random()*(window.innerWidth-coin1.width)}px`;
@@ -75,30 +99,34 @@
 				scoreboard.innerHTML = `score:${score}`
 			}
 			
+			if (intersection(person1, enemy1)) {
+				stop++;
+				restart.style.display = "block";
+			}
 				
 			
-			if (buttonRight) {
+			if (buttonRight && stop == 0) {
 				x = x+5;
 				person.style.left = `${x}px`;
 				if (x + person1.width >=window.innerWidth) {
 					x = x - 5;
 				}
 			}
-			if (buttonLeft) {
+			if (buttonLeft && stop == 0) {
 				x = x-5;
 				person.style.left = `${x}px`;
 				if (x <= 0) {
 					x = x + 5;
 				}
 			}
-			if (buttonDown) {
+			if (buttonDown && stop == 0) {
 				y = y+5;
 				person.style.top = `${y}px`;
 				if (y >=window.innerHeight) {
 					y = y - 5;
 				}
 			}
-			if (buttonUp) {
+			if (buttonUp && stop == 0) {
 				y = y-5;
 				person.style.top = `${y}px`;
 				if (y + person1.height <= 0) {
